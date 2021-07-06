@@ -56,9 +56,6 @@ let renderLabels = (lng) => {
 
 }
 
-// Get the values of the input
-let getInputValues = () => {
 
-}
 
 renderLabels(language);
