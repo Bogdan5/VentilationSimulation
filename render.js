@@ -1,6 +1,8 @@
 const electron = require('electron');
 const {ipcRenderer} = electron;
 
+let {data, recalculate} = require('./content/data.js');
+
 // Default values
 let language = 'english';
 let degreeUnit = 'C';
@@ -13,8 +15,6 @@ ipcRenderer.on('languageChange', function (e, lang){
     language = lang;
     renderLabels(language);
   }
-  
-  //Might need to re-render here
 });
 
 //Render the normal behaviour button
@@ -58,4 +58,37 @@ let renderLabels = (lng) => {
 
 
 
+//Add event listenders for all inputs
+let addEventListenerInput = (id) => {
+  document.getElementById(id).addEventListener('input', saveInputChange(id));
+}
+
+//let timer = new Date();
+let timer = 0;
+let idClicked;
+// Get the values of the input
+let saveInputChange = (id) => {
+  let val = document.getElementById(id).value;
+  return () => {
+    if (!val){
+      data[id] = 0;
+    } else {
+      console.log(val);
+      data[id] = val;
+    }
+  }
+  // if (new Date() - timer > 1000 && (id && idClicked !== id)) {
+  //   data[id] = document.getElementById(id).value;
+  //   recalculate(); //Maybe a timing delay
+  // }
+}
+
 renderLabels(language);
+addEventListenerInput('minTransmTempData');
+addEventListenerInput('maxTransmTempData');
+addEventListenerInput('minDesirTempData');
+addEventListenerInput('maxDesirTempData');
+addEventListenerInput('setPointData');
+addEventListenerInput('sensitivityData');
+addEventListenerInput('minFinContrPressData');
+addEventListenerInput('maxFinContrPressData');
