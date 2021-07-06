@@ -1,0 +1,94 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+.naked{
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+.title {
+  height: 50px;
+  background-color: rgb(179, 225, 236);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 200;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin: 0;
+}
+
+.mainContainer{
+  padding: 0;
+  border: 0;
+}
+
+.optionsButton{
+  height: 40px;
+  width: 125px;
+  border-radius: 5px;
+  background-color: white;
+  margin-left: 10px;
+  border: 3px solid rgb(179, 225, 236);
+  outline: none;
+}
+
+.optionsButton:hover{
+  background-color: rgb(240, 239, 239);
+  cursor: pointer;
+}
+
+#firstContainerOptions{
+  height: 50px;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+canvas {
+  /* border: 2px solid; */
+  outline: 0;
+  padding: 0;
+}
+
+.canvasContainer{
+  display:flex;
+  justify-content: center;
+}
+
+.variables{
+  display: flex;
+  flex-direction: row;
+}
+
+.variablesContainer{
+  display: flex;
+  flex-direction: row;
+  width: 25%;
+}
+
+.variablesContainer:first-child{
+  margin-left:5px;
+}
+
+.variablesUnit{
+  display:flex;
+  flex-direction: column;
+  /* justify-content: center; */
+}
+
+/* .variablesUnit>div{
+  width:60%;
+} */
+
+input{
+  width: 55px;
+  outline:none;
+  margin-left: 10px;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Ventilation simulation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<script defer src='render.js'></script>
+<body>
+  <h1 class="title">Ventilation Simulation</h1>
+  <div id="mainContainer">
+    <div id="firstContainerOptions">
+      <div id="optionText"></div>
+      <button id='degreesButton' class='optionsButton'></button>
+      <button id='normalBehaviourButton' class='optionsButton'></button>
+    </div>
+    <div class='canvasContainer'>
+      <canvas id='drawing' width='1100' height='100'>
+        <script src='./content/canvas.js'></script>
+      </canvas>
+    </div>
+    <div class='variables'>
+      <div class='variablesContainer naked'>
+        <div class='variablesUnit'>
+          <div id='minTempTransmLabel'></div>
+          <div id='maxTempTransmLabel'></div>
+        </div>
+        <div class='variablesUnit'>
+          <input type='number' id='minTempTransInput' step='0.1'>
+          <input type='number' id='maxTempTransInput' step='0.1'>
+        </div>
+      </div>
+      <div class='variablesContainer naked'>
+        <div class='variablesUnit'>
+          <div id='minTempDesirLabel'></div>
+          <div id='maxTempDesirLabel'></div>
+        </div>
+        <div class='variablesUnit'>
+          <input type='number' id='minTempDesirInput' step='0.1'>
+          <input type='number' id='maxTempDesirInput' step='0.1'>
+        </div>
+      </div>
+      <div class='variablesContainer naked'>
+        <div class='variablesUnit'>
+          <div id='setPointLabel'></div>
+          <div id='sensitivityLabel'></div>
+        </div>
+        <div class='variablesUnit'>
+          <input type='number' id='setPointInput' step='0.1'>
+          <input type='number' id='sensitivityInput' step='0.1'>
+        </div>
+      </div>
+      <div class='variablesContainer naked'>
+        <div class='variablesUnit'>
+          <div id='minFinContPressLabel'></div>
+          <div id='maxFinContPressLabel'></div>
+        </div>
+        <div class='variablesUnit'>
+          <input type='number' id='minFinContPressInput' step='0.1'>
+          <input type='number' id='maxFinContPressInput' step='0.1'>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

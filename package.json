@@ -1,0 +1,14 @@
+{
+  "name": "ventilation",
+  "version": "1.0.0",
+  "description": "Ventilation simulation",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Bogdan Ciomaga",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^1.8.8"
+  }
+}
