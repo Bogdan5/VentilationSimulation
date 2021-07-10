@@ -92,3 +92,12 @@ input{
   outline:none;
   margin-left: 10px;
 }
+
+/* The div with the current temperature */
+.currentTemp{
+  height: 80px;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+}

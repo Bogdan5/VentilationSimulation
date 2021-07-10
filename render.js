@@ -1,7 +1,7 @@
 const electron = require('electron');
 const {ipcRenderer} = electron;
 
-let {data, recalculate} = require('./content/data.js');
+let {data, knownValues, recalculate} = require('./content/data.js');
 
 // Default values
 let language = 'english';
@@ -41,6 +41,12 @@ degreesButton.addEventListener('click', ()=> {
   degreesButton.innerHTML = '&#176;&#160;' + degreeUnit;
 });
 
+// Render one label
+let renderOneLabel = (id, knownVal, lng) => {
+  let elem = document.getElementById(id);
+  // elem.innerHTML = 
+};
+
 // Render all labels
 let renderLabels = (lng) => {
   document.getElementById('optionText').innerHTML = languageLabels[lng].changeOptions;
@@ -53,8 +59,9 @@ let renderLabels = (lng) => {
   document.getElementById('sensitivityLabel').innerHTML = languageLabels[lng].sensitivity;
   document.getElementById('minFinContPressLabel').innerHTML = languageLabels[lng].minFinContPress;
   document.getElementById('maxFinContPressLabel').innerHTML = languageLabels[lng].maxFinContPress;
+  document.getElementById('currentTempLabel').innerHTML = languageLabels[lng].currTemp;
 
-}
+};
 
 
 
@@ -63,13 +70,10 @@ let addEventListenerInput = (id) => {
   document.getElementById(id).addEventListener('input', saveInputChange(id));
 }
 
-//let timer = new Date();
-let timer = 0;
-let idClicked;
 // Get the values of the input
 let saveInputChange = (id) => {
-  let val = document.getElementById(id).value;
   return () => {
+    let val = document.getElementById(id).value;
     if (!val){
       data[id] = 0;
     } else {
@@ -77,10 +81,7 @@ let saveInputChange = (id) => {
       data[id] = val;
     }
   }
-  // if (new Date() - timer > 1000 && (id && idClicked !== id)) {
-  //   data[id] = document.getElementById(id).value;
-  //   recalculate(); //Maybe a timing delay
-  // }
+
 }
 
 renderLabels(language);

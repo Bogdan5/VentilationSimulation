@@ -7,10 +7,21 @@ exports.data = {
   setPointData: 0,
   sensitivityData: 0,
   minFinContrPressData: 0,
-  maxFinContrPressData: 0
+  maxFinContrPressData: 0,
+  temperature: 0
 }
 
-
+exports.knownValues = {
+  minTransmTempData: true,
+  maxTransmTempData: true,
+  minDesirTempData: true,
+  maxDesirTempData: true,
+  setPointData: false,
+  sensitivityData: false,
+  minFinContrPressData: true,
+  maxFinContrPressData: true,
+  temperature: true
+}
 
 
 // Recalculates value on change
