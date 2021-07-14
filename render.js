@@ -2,6 +2,7 @@ const electron = require('electron');
 const {ipcRenderer} = electron;
 
 let {data, knownValues, recalculate} = require('./content/data.js');
+let {moveSliderHandle} = require('./content/sliders.js');
 
 // Default values
 let language = 'english';
@@ -82,6 +83,14 @@ let saveInputChange = (id) => {
     }
   }
 
+}
+
+//Render slider current temperature
+let renderCurrentTempSlider = (idHandler, idDisplay, idSlider, orientation, rangeMovement) => {
+  const handle = document.getElementById(idHandler);
+  handle.addEventListener('mousedown', () => {
+    moveSliderHandle(idHandler, idDisplay, idSlider, orientation, rangeMovement);
+  })
 }
 
 renderLabels(language);

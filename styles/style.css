@@ -1,0 +1,184 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+.naked {
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+.title {
+  height: 50px;
+  background-color: #b3e1ec;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 30px;
+  font-weight: 200;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  margin: 0;
+}
+
+#mainContainer {
+  padding: 0;
+  border: 0;
+}
+
+.optionsButton {
+  height: 40px;
+  width: 125px;
+  border-radius: 5px;
+  background-color: white;
+  margin-left: 10px;
+  border: 3px solid #b3e1ec;
+  outline: none;
+}
+
+.optionsButton:hover {
+  background-color: #f0efef;
+  cursor: pointer;
+}
+
+#firstContainerOptions {
+  height: 50px;
+  padding: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+canvas {
+  /* border: 2px solid; */
+  outline: 0;
+  padding: 0;
+}
+
+.canvasContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.variables {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.variablesContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 25%;
+}
+
+.variablesContainer:first-child {
+  margin-left: 5px;
+}
+
+.variablesUnit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  /* justify-content: center; */
+}
+
+/* .variablesUnit>div{
+  width:60%;
+} */
+input {
+  width: 55px;
+  outline: none;
+  margin-left: 10px;
+}
+
+/* The div with the current temperature */
+.currentTemp {
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.currentTempContainer {
+  width: 300px;
+  height: 40px;
+  /* background-color: purple; */
+}
+
+.emptyTop {
+  height: 20px;
+  position: relative;
+}
+
+.sliderButtonDisplay {
+  width: 30px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  background-color: blue;
+  opacity: 0.5;
+}
+
+.sliderButtonHandle {
+  position: absolute;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+  background-color: #61c1d8;
+  cursor: pointer;
+}
+
+.sliderRange {
+  height: 20px;
+  background-color: #dcf1f6;
+}
+
+.sliderButtonHandleContainer {
+  padding: 5px;
+}
+/*# sourceMappingURL=style.css.map */
