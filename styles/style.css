@@ -166,16 +166,27 @@ input {
 
 .sliderButtonHandle {
   position: absolute;
-  top: 20px;
+  top: 0;
   width: 20px;
   height: 20px;
   background-color: #61c1d8;
   cursor: pointer;
 }
 
-.sliderRange {
+.sliderBase {
   height: 20px;
   background-color: #dcf1f6;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .sliderButtonHandleContainer {

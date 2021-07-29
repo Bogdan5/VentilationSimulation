@@ -29,6 +29,20 @@ exports.recalculate = () => {
 
 }
 
+// Get the values of the input
+exports.saveInputChange = (id, dat) => {
+  return () => {
+    let val = document.getElementById(id).value;
+    if (!val){
+      dat[id] = 0;
+    } else {
+      console.log(val);
+      dat[id] = val;
+    }
+  }
+
+}
+
 
 
 // export {data, recalculate};

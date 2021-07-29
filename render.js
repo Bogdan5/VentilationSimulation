@@ -1,7 +1,7 @@
 const electron = require('electron');
 const {ipcRenderer} = electron;
 
-let {data, knownValues, recalculate} = require('./content/data.js');
+let {data, knownValues, recalculate, saveInputChange} = require('./content/data.js');
 let {moveSliderHandle} = require('./content/sliders.js');
 
 // Default values
@@ -68,30 +68,17 @@ let renderLabels = (lng) => {
 
 //Add event listenders for all inputs
 let addEventListenerInput = (id) => {
-  document.getElementById(id).addEventListener('input', saveInputChange(id));
+  document.getElementById(id).addEventListener('input', saveInputChange(id, data));
 }
 
-// Get the values of the input
-let saveInputChange = (id) => {
-  return () => {
-    let val = document.getElementById(id).value;
-    if (!val){
-      data[id] = 0;
-    } else {
-      console.log(val);
-      data[id] = val;
-    }
-  }
 
-}
 
 //Render slider current temperature
-let renderCurrentTempSlider = (idHandler, idDisplay, idSlider, orientation, rangeMovement) => {
-  const handle = document.getElementById(idHandler);
-  handle.addEventListener('mousedown', () => {
-    moveSliderHandle(idHandler, idDisplay, idSlider, orientation, rangeMovement);
-  })
-}
+let idHandler = document.getElementById('sliderButtonHandle');
+let idDisplay = document.getElementById('sliderButtonDisplay');
+let idSlider = document.getElementById('sliderBase');
+moveSliderHandle(idHandler, idDisplay, idSlider, 'horizontal');
+
 
 renderLabels(language);
 addEventListenerInput('minTransmTempData');
