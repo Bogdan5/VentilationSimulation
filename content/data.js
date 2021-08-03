@@ -25,7 +25,7 @@ exports.knownValues = {
 
 
 // Recalculates value on change
-exports.recalculate = () => {
+const recalculate = () => {
 
 }
 
@@ -38,9 +38,21 @@ exports.saveInputChange = (id, dat) => {
     } else {
       console.log(val);
       dat[id] = val;
+      recalcutate();
     }
   }
 
+}
+
+//Debouncing
+exports.debounce = (func, delay) => {
+  let debouncing
+  return function() {
+    const context = this
+    const args = arguments
+    clearTimeout(debouncing)
+    debouncing = setTimeout(() => func.apply(context, args), delay)
+  }
 }
 
 
