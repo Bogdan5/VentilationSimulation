@@ -6,7 +6,7 @@ let {moveSliderHandle} = require('./content/sliders.js');
 
 // Default values
 let language = 'english';
-let degreeUnit = 'C';
+let degreeUnit = 'F';
 let normalBehaviour = "normalOpen";
 
 // Set the language of the labels
