@@ -115,6 +115,32 @@ input{
   position: relative;
 }
 
+//Results section_________________________________________________________________________________
+.results{
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.values{
+  background-color: cadetblue;
+  width: 40px;
+  height: 20px;
+}
+
+.resultsLabel{
+  padding-right: 10px;
+}
+
+.resultsClip{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+//Slider stuff_______________________________________________________________________________
+
 .sliderButtonDisplay{
   width: 30px;
   height: 20px;

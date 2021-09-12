@@ -13,22 +13,30 @@ exports.languageLabels = {
     temperature: "Temperature",
     changeOptions: "Toggle buttons to change",
     normalOpen: "Normally open",
-    normalClosed: "Normally closed"
+    normalClosed: "Normally closed",
+    proportBand:"Proportional Band",
+    transmPress: "Transmitter pressure",
+    finContrPress: "Final control pressure",
+    openFinContr: "% open final control"
   },
   french: {
     transmMaxTemp: "Max Transmitter Temp",
     transmMinTemp: "Min Transmitter Temp",
     maxDesirTemp: "Max Desirable Temp",
     minDesirTemp: "Min Desirable Temp",
-    setPoint: "Set Point",
-    sensitivity: "Sensitivity",
-    currTemp: "Current Temperature",
+    setPoint: "Point de consigne",
+    sensitivity: "Sensitivité",
+    currTemp: "Temperature",
     maxFinContPress: "Max Final Control Press",
     minFinContPress: "Min Final Control Press",
-    pressure: "Pressure",
+    pressure: "Pression",
     temperature: "Temperature",
     changeOptions: "Cliquez les boutons pour changer les options",
     normalOpen: "Normallement ouvert",
-    normalClosed: "Normallement ferme"
+    normalClosed: "Normallement ferme",
+    proportBand: "Bande proportionnelle",
+    transmPress: "Pression transmetteur",
+    finContrPress: 'Pression control final',
+    openFinContr: '% ouvert control final'
   }
 };

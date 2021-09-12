@@ -1,7 +1,8 @@
 const electron = require('electron');
 const {ipcRenderer} = electron;
 
-let {data, knownValues, recalculate, saveInputChange, debounce} = require('./content/data.js');
+let {data} = require('./content/data.js');
+let {recalculate, saveInputChange, debounce} = require('./content/calculation.js');
 let {moveSliderHandle} = require('./content/sliders.js');
 
 // Default values
@@ -61,13 +62,30 @@ let renderLabels = (lng) => {
   document.getElementById('minFinContPressLabel').innerHTML = languageLabels[lng].minFinContPress;
   document.getElementById('maxFinContPressLabel').innerHTML = languageLabels[lng].maxFinContPress;
   document.getElementById('currentTempLabel').innerHTML = languageLabels[lng].currTemp;
-
+  document.getElementById('transmitterPressLabel').innerHTML = languageLabels[lng].transmPress;
+  document.getElementById('proportionalBandLabel').innerHTML = languageLabels[lng].proportBand;
+  document.getElementById('finContrPressLabel').innerHTML = languageLabels[lng].finContrPress;
+  document.getElementById('openFinContrLabel').innerHTML = languageLabels[lng].openFinContr;
+  //document.getElementById('').innerHTML = languageLabels[lng].
 };
+
+//Render the values of inputs
+let renderInputs = (data) => {
+  document.getElementById('minTransmTempData').value = data.minTransmTemp.val;
+  document.getElementById('maxTransmTempData').value = data.maxTransmTemp.val;
+  document.getElementById('minDesirTempData').value = data.minDesirTemp.val;
+  document.getElementById('maxDesirTempData').value = data.maxDesirTemp.val;
+  document.getElementById('minFinContrPressData').value = data.minFinContrPress.val;
+  document.getElementById('maxFinContrPressData').value = data.maxFinContrPress.val;
+}
 
 //Add event listenders for all inputs
 let addEventListenerInput = (id) => {
-  document.getElementById(id).addEventListener('input', debounce(saveInputChange(id, data), 300));
+  // document.getElementById(id).addEventListener('input', debounce(saveInputChange(id, data), 300));
 }
+
+//***************************************************************************************************
+//*******************SLIDER**************************************************************************
 
 //Render slider current temperature
 let idHandler = document.getElementById('sliderButtonHandle');
@@ -75,13 +93,27 @@ let idDisplay = document.getElementById('sliderButtonDisplay');
 let idSlider = document.getElementById('sliderBase');
 moveSliderHandle(idHandler, idDisplay, idSlider, 'horizontal');
 
+//Render the results
+let renderResults = (resultObj) => {
+  document.getElementById('transmitterPressVal').innerHTML = resultObj
+  document.getElementById('sensitivityVal').innerHTML = resultObj
+  document.getElementById('pressureBandVal').innerHTML = resultObj
+  document.getElementById('finControlPressVal').innerHTML = resultObj
+  document.getElementById('transmitterPressVal').innerHTML = resultObj
+  //document.getElementById('transmitterPressVal').innerHTML = resultObj
+  //document.getElementById('transmitterPressVal').innerHTML = resultObj
+  //document.getElementById('transmitterPressVal').innerHTML = resultObj
+
+}
+
 
 renderLabels(language);
+renderInputs(data);
 addEventListenerInput('minTransmTempData');
 addEventListenerInput('maxTransmTempData');
 addEventListenerInput('minDesirTempData');
 addEventListenerInput('maxDesirTempData');
 addEventListenerInput('setPointData');
-addEventListenerInput('sensitivityData');
+// addEventListenerInput('sensitivityData');
 addEventListenerInput('minFinContrPressData');
 addEventListenerInput('maxFinContrPressData');

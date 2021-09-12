@@ -16,24 +16,16 @@ exports.data = {
     val: 170,
     known: true
   },
-  setPoint: {
-    data: false,
-    known: false
-  },
-  sensitivity: {
-    data: false,
-    known: false
-  },
   minFinContrPress: {
-    data: 3,
+    val: 3,
     known: true
   },
-  maxFinContrPressData: {
-    data: 13,
+  maxFinContrPress: {
+    val: 13,
     known: true
   },
   temperature: {
-    data: 23,
+    val: 23,
     known: true
   }
 };

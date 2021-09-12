@@ -39,16 +39,7 @@
           <input type='number' id='maxDesirTempData' step='0.1'>
         </div>
       </div>
-      <div class='variablesContainer naked'>
-        <div class='variablesUnit'>
-          <div id='setPointLabel'></div>
-          <div id='sensitivityLabel'></div>
-        </div>
-        <div class='variablesUnit'>
-          <input type='number' id='setPointData' step='0.1'>
-          <input type='number' id='sensitivityData' step='0.1'>
-        </div>
-      </div>
+
       <div class='variablesContainer naked'>
         <div class='variablesUnit'>
           <div id='minFinContPressLabel'></div>
@@ -59,6 +50,38 @@
           <input type='number' id='maxFinContrPressData' step='0.1'>
         </div>
       </div>
+    </div>
+    <div class='results'>
+      <div class='resultsCol'>
+        <div class='resultsClip'>
+          <div id='setPointLabel' class='resultsLabel'></div>
+          <div id='transmitterPressVal' class='values'></div>
+        </div>
+        <div class='resultsClip'>
+          <div id='transmitterPressLabel' class='resultsLabel'></div>
+          <div id='transmitterPressVal' class='values'></div>
+        </div>
+      </div>
+      <div class='resultsCol'>
+        <div class='resultsClip'>
+          <div id='sensitivityLabel' class='resultsLabel'></div>
+          <div id='sensitivityVal' class='values'></div>
+        </div>
+        <div class='resultsClip'>
+          <div id='proportionalBandLabel' class='resultsLabel'></div>
+          <div id='proportionalBandVal' class='values'></div>
+        </div>
+      </div>
+      <div class='resultsCol'>
+        <div class='resultsClip'>
+          <div id='finContrPressLabel' class='resultsLabel'></div>
+          <div id='finControlPressVal' class='values'></div>
+        </div>
+        <div class='resultsClip'>
+          <div id='openFinContrLabel' class='resultsLabel'></div>
+          <div id='openFinContrVal' class='values'></div>
+        </div>
+      </div> 
     </div>
     <div class='currentTemp naked'>
       <div id='currentTempLabel'></div>
