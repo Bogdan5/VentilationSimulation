@@ -92,26 +92,6 @@ input {
   margin-left: 10px;
 }
 
-/* The div with the current temperature */
-.currentTemp {
-  height: 40px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-end;
-}
-
-.currentTempContainer {
-  width: 300px;
-  height: 40px;
-  /* background-color: purple; */
-}
-
-.emptyTop {
-  height: 20px;
-  position: relative;
-}
-
 .results {
   border: 1px solid black;
   display: flex;
@@ -135,6 +115,30 @@ input {
   justify-content: space-between;
 }
 
+/* The div with the current temperature */
+.currentTemp {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.currentTempContainer {
+  width: 350px;
+  height: 40px;
+}
+
+.emptyTop {
+  height: 20px;
+  position: relative;
+}
+
+.currentTempControls {
+  display: flex;
+  flex-direction: row;
+  height: 20px;
+}
+
 .sliderButtonDisplay {
   width: 30px;
   height: 20px;
@@ -144,6 +148,20 @@ input {
   opacity: 0.5;
 }
 
+.sliderArrow {
+  width: 30px;
+  background-color: chocolate;
+  color: #39b1cd;
+  text-align: center;
+  font-weight: 900;
+}
+
+.slider {
+  background-color: crimson;
+  width: 300px;
+  position: relative;
+}
+
 .sliderButtonHandle {
   position: absolute;
   top: 0;
@@ -151,19 +169,6 @@ input {
   height: 20px;
   background-color: #61c1d8;
   cursor: pointer;
-}
-
-.sliderBase {
-  height: 20px;
-  background-color: #dcf1f6;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.sliderButtonHandleContainer {
-  padding: 5px;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,3 +1,5 @@
+let {data} = require('./data.js');
+
 exports.debounce = (func, delay) => {
   let debouncing
   return function() {
@@ -39,7 +41,7 @@ let renderResults = (data, minOpen, maxOpen) => {
 // Recalculates value on change
 const recalculate = (data, normalBehaviour) => {
   let minOpen, maxOpen;
-  if (dataCompletenessCheck(data) && dataValidityCheck(data)) {
+  if (dataCompletenessCheck(data)) {
     if (normalBehaviour === 'normalOpen') {
       minOpen = 100;
       maxOpen = 0;
@@ -47,20 +49,27 @@ const recalculate = (data, normalBehaviour) => {
       minOpen = 0;
       maxOpen = 100;
     }
-    debounce(renderResults(data, minOpen, maxOpen), 300);
+    renderResults(data, minOpen, maxOpen);
   }
 }
 
 // Get the values of the input
-exports.saveInputChange = (id, dat) => {
+exports.saveInputChange = (id) => {
+  let x = data[id].val;
   return () => {
     let val = document.getElementById(id).value;
-    if (!val){
-      dat[id] = 0;
+    if (val.length === 0){
+      data[id].known = false;
     } else {
       console.log(val);
-      dat[id] = val;
-      recalculate();
+      data[id].val = val;
+      //Check if the data is complete and valid
+      if (dataValidityCheck(data)){
+        recalculate();
+      } else {
+        data[id].val = x;
+      }
+      // data[id].known = true;
     }
   }
 }

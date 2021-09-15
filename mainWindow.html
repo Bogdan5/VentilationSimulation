@@ -25,8 +25,8 @@
           <div id='maxTempTransmLabel'></div>
         </div>
         <div class='variablesUnit'>
-          <input type='number' id='minTransmTempData' step='0.1'>
-          <input type='number' id='maxTransmTempData' step='0.1'>
+          <input type='number' id='minTransmTemp' step='0.1'>
+          <input type='number' id='maxTransmTemp' step='0.1'>
         </div>
       </div>
       <div class='variablesContainer naked'>
@@ -35,8 +35,8 @@
           <div id='maxTempDesirLabel'></div>
         </div>
         <div class='variablesUnit'>
-          <input type='number' id='minDesirTempData' step='0.1'>
-          <input type='number' id='maxDesirTempData' step='0.1'>
+          <input type='number' id='minDesirTemp' step='0.1'>
+          <input type='number' id='maxDesirTemp' step='0.1'>
         </div>
       </div>
 
@@ -46,58 +46,59 @@
           <div id='maxFinContPressLabel'></div>
         </div>
         <div class='variablesUnit'>
-          <input type='number' id='minFinContrPressData' step='0.1'>
-          <input type='number' id='maxFinContrPressData' step='0.1'>
+          <input type='number' id='minFinContrPress' step='0.1'>
+          <input type='number' id='maxFinContrPress' step='0.1'>
         </div>
       </div>
-    </div>
-    <div class='results'>
-      <div class='resultsCol'>
-        <div class='resultsClip'>
-          <div id='setPointLabel' class='resultsLabel'></div>
-          <div id='transmitterPressVal' class='values'></div>
-        </div>
-        <div class='resultsClip'>
-          <div id='transmitterPressLabel' class='resultsLabel'></div>
-          <div id='transmitterPressVal' class='values'></div>
-        </div>
-      </div>
-      <div class='resultsCol'>
-        <div class='resultsClip'>
-          <div id='sensitivityLabel' class='resultsLabel'></div>
-          <div id='sensitivityVal' class='values'></div>
-        </div>
-        <div class='resultsClip'>
-          <div id='proportionalBandLabel' class='resultsLabel'></div>
-          <div id='proportionalBandVal' class='values'></div>
-        </div>
-      </div>
-      <div class='resultsCol'>
-        <div class='resultsClip'>
-          <div id='finContrPressLabel' class='resultsLabel'></div>
-          <div id='finControlPressVal' class='values'></div>
-        </div>
-        <div class='resultsClip'>
-          <div id='openFinContrLabel' class='resultsLabel'></div>
-          <div id='openFinContrVal' class='values'></div>
-        </div>
-      </div> 
-    </div>
+    </div> 
     <div class='currentTemp naked'>
-      <div id='currentTempLabel'></div>
+      <div id='currentTempLabel'></div>      
       <div class='currentTempContainer'>
         <div class='emptyTop naked'>
           <div id='sliderButtonDisplay' class='sliderButtonDisplay'></div>
         </div>
-        <div id='slider'>
-          <div id='arrowLeft'></div>
-          <div id='sliderBase' class='sliderBase'>
+        <div class='currentTempControls naked'>
+          <div id='arrowLeft' class='sliderArrow naked'><</div>
+          <div class='slider naked'>
             <div id='sliderButtonHandle' class='sliderButtonHandle'></div>
           </div>
-          <div id='arrowRight'></div>
+          <div id='arrowRight' class='sliderArrow naked'>></div>
+          <input type='number' id='temperature'>
         </div>
       </div>
     </div>
+  </div>
+  <div class='results'>
+    <div class='resultsCol'>
+      <div class='resultsClip'>
+        <div id='setPointLabel' class='resultsLabel'></div>
+        <div id='transmitterPressVal' class='values'></div>
+      </div>
+      <div class='resultsClip'>
+        <div id='transmitterPressLabel' class='resultsLabel'></div>
+        <div id='transmitterPressVal' class='values'></div>
+      </div>
+    </div>
+    <div class='resultsCol'>
+      <div class='resultsClip'>
+        <div id='sensitivityLabel' class='resultsLabel'></div>
+        <div id='sensitivityVal' class='values'></div>
+      </div>
+      <div class='resultsClip'>
+        <div id='proportionalBandLabel' class='resultsLabel'></div>
+        <div id='proportionalBandVal' class='values'></div>
+      </div>
+    </div>
+    <div class='resultsCol'>
+      <div class='resultsClip'>
+        <div id='finContrPressLabel' class='resultsLabel'></div>
+        <div id='finControlPressVal' class='values'></div>
+      </div>
+      <div class='resultsClip'>
+        <div id='openFinContrLabel' class='resultsLabel'></div>
+        <div id='openFinContrVal' class='values'></div>
+      </div>
+    </div> 
   </div>
 </body>
 </html>
