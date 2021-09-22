@@ -1,46 +1,46 @@
 const electron = require('electron');
 const {ipcRenderer} = electron;
 
-let {data} = require('./content/data.js');
-let {saveInputChange, debounce} = require('./content/calculation.js');
+let {data, type} = require('./content/data.js');
+let {saveInputChange, debounce, recalculate, sliderMove} = require('./content/calculation.js');
 let {moveSliderHandle} = require('./content/sliders.js');
 
 // Default values
-let language = 'english';
+// let language = 'english';
 let degreeUnit = 'F';
 let normalBehaviour = "normalOpen";
 
 // Set the language of the labels
 const {languageLabels} = require('./content/languagesLabels.js');
 ipcRenderer.on('languageChange', function (e, lang){
-  if (lang !== language) {
-    language = lang;
-    renderLabels(language);
+  if (lang !== type.language) {
+    type.language = lang;
+    renderLabels(type.language);
   }
 });
 
 //Render the normal behaviour button
 let normalBehaviourButton = document.getElementById('normalBehaviourButton');
-normalBehaviourButton.innerHTML = languageLabels[language][normalBehaviour];
+normalBehaviourButton.innerHTML = languageLabels[type.language][type.normalBehaviour];
 normalBehaviourButton.addEventListener('click', () => {
-  if (normalBehaviour === 'normalOpen') {
-    normalBehaviour = 'normalClosed';
-  } else if (normalBehaviour === 'normalClosed'){
-    normalBehaviour = 'normalOpen';
+  if (type.normalBehaviour === 'normalOpen') {
+    type.normalBehaviour = 'normalClosed';
+  } else if (type.normalBehaviour === 'normalClosed'){
+    type.normalBehaviour = 'normalOpen';
   }
-  normalBehaviourButton.innerHTML = languageLabels[language][normalBehaviour];
+  normalBehaviourButton.innerHTML = languageLabels[type.language][type.normalBehaviour];
 });
 
 // Render the degrees button
 let degreesButton = document.getElementById('degreesButton');
-degreesButton.innerHTML = '&#176;&#160;' + degreeUnit;
+degreesButton.innerHTML = '&#176;&#160;' + type.degreeUnit;
 degreesButton.addEventListener('click', ()=> {
-  if (degreeUnit === 'C') {
-    degreeUnit = 'F';
-  } else if (degreeUnit === 'F') {
-    degreeUnit = 'C';
+  if (type.degreeUnit === 'C') {
+    type.degreeUnit = 'F';
+  } else if (type.degreeUnit === 'F') {
+    type.degreeUnit = 'C';
   }
-  degreesButton.innerHTML = '&#176;&#160;' + degreeUnit;
+  degreesButton.innerHTML = '&#176;&#160;' + type.degreeUnit;
 });
 
 // Render one label
@@ -52,7 +52,7 @@ let renderOneLabel = (id, knownVal, lng) => {
 // Render all labels
 let renderLabels = (lng) => {
   document.getElementById('optionText').innerHTML = languageLabels[lng].changeOptions;
-  normalBehaviourButton.innerHTML = languageLabels[language][normalBehaviour];
+  normalBehaviourButton.innerHTML = languageLabels[type.language][type.normalBehaviour];
   document.getElementById('minTempTransmLabel').innerHTML = languageLabels[lng].transmMinTemp;
   document.getElementById('maxTempTransmLabel').innerHTML = languageLabels[lng].transmMaxTemp;
   document.getElementById('minTempDesirLabel').innerHTML = languageLabels[lng].minDesirTemp;
@@ -74,6 +74,7 @@ let renderInputs = (data) => {
   for (i in data){
     document.getElementById(i).value = data[i].val;
   }
+  console.log(document.getElementById('minDesirTemp').value);
   // document.getElementById('minTransmTemp').value = data.minTransmTemp.val;
   // document.getElementById('maxTransmTemp').value = data.maxTransmTemp.val;
   // document.getElementById('minDesirTemp').value = data.minDesirTemp.val;
@@ -87,6 +88,12 @@ let renderInputs = (data) => {
 let addEventListenerInput = (id) => {
   document.getElementById(id).addEventListener('input', debounce(saveInputChange(id), 1000));
 }
+
+//Add event listener to temperature slider
+
+
+//Add event listener for the current temperature slider
+document.getElementById('slider-temperature').addEventListener('change', sliderMove('slider-temperature'));
 
 //***************************************************************************************************
 //*******************SLIDER**************************************************************************
@@ -111,13 +118,15 @@ let renderResults = (resultObj) => {
 }
 
 
-renderLabels(language);
+renderLabels(type.language);
 renderInputs(data);
-addEventListenerInput('minTransmTempData');
-addEventListenerInput('maxTransmTempData');
-addEventListenerInput('minDesirTempData');
-addEventListenerInput('maxDesirTempData');
+addEventListenerInput('minTransmTemp');
+addEventListenerInput('temperature');
+addEventListenerInput('maxTransmTemp');
+addEventListenerInput('minDesirTemp');
+addEventListenerInput('maxDesirTemp');
 // addEventListenerInput('setPointData');
 // addEventListenerInput('sensitivityData');
-addEventListenerInput('minFinContrPressData');
-addEventListenerInput('maxFinContrPressData');
+addEventListenerInput('minFinContrPress');
+addEventListenerInput('maxFinContrPress');
+recalculate(data, type.normalBehaviour);

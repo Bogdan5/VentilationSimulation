@@ -58,11 +58,12 @@
           <div id='sliderButtonDisplay' class='sliderButtonDisplay'></div>
         </div>
         <div class='currentTempControls naked'>
-          <div id='arrowLeft' class='sliderArrow naked'><</div>
-          <div class='slider naked'>
+          <div id='arrowLeft' class='sliderArrow naked'>&#11164;</div>
+          <!-- <div class='slider naked'>
             <div id='sliderButtonHandle' class='sliderButtonHandle'></div>
-          </div>
-          <div id='arrowRight' class='sliderArrow naked'>></div>
+          </div> -->
+          <input type='range' id='slider-temperature' class='currentTempSlider naked' min='0' max='100' step='1' value='50'>
+          <div id='arrowRight' class='sliderArrow naked'>&#11166;</div>
           <input type='number' id='temperature'>
         </div>
       </div>
@@ -72,7 +73,7 @@
     <div class='resultsCol'>
       <div class='resultsClip'>
         <div id='setPointLabel' class='resultsLabel'></div>
-        <div id='transmitterPressVal' class='values'></div>
+        <div id='setPointVal' class='values'></div>
       </div>
       <div class='resultsClip'>
         <div id='transmitterPressLabel' class='resultsLabel'></div>
@@ -92,13 +93,16 @@
     <div class='resultsCol'>
       <div class='resultsClip'>
         <div id='finContrPressLabel' class='resultsLabel'></div>
-        <div id='finControlPressVal' class='values'></div>
+        <div id='finContrPressVal' class='values'></div>
       </div>
       <div class='resultsClip'>
         <div id='openFinContrLabel' class='resultsLabel'></div>
         <div id='openFinContrVal' class='values'></div>
       </div>
     </div> 
+  </div>
+  <div class='sliders'>
+    <input type='range' id='currentTempSlider' class='example' min='0' max='100' step='1' value='50' orient='vertical'>
   </div>
 </body>
 </html>

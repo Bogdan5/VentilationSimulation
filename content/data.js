@@ -11,12 +11,12 @@ exports.data = {
     elem: document.getElementById('maxTransmTempData')
   },
   minDesirTemp: {
-    val: 120,
+    val: 70,
     known: true,
     elem: document.getElementById('minDesirTempData')
   },
   maxDesirTemp: {
-    val: 170,
+    val: 80,
     known: true,
     elem: document.getElementById('maxDesirTempData')
   },
@@ -31,8 +31,14 @@ exports.data = {
     elem: document.getElementById('maxFinContrPressData')
   },
   temperature: {
-    val: 23,
+    val: 73,
     known: true,
     elem: document.getElementById('temperature')
   }
+};
+
+exports.type = {
+  normalBehaviour: 'closed',
+  language: 'english',
+  degreeUnit: 'F'
 };
