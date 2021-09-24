@@ -3,7 +3,7 @@ const {ipcRenderer} = electron;
 
 let {data, type} = require('./content/data.js');
 let {saveInputChange, debounce, recalculate, sliderMove} = require('./content/calculation.js');
-let {moveSliderHandle} = require('./content/sliders.js');
+let {mouseMove} = require('./content/sliders.js');
 
 // Default values
 // let language = 'english';
@@ -89,7 +89,10 @@ let addEventListenerInput = (id) => {
   document.getElementById(id).addEventListener('input', debounce(saveInputChange(id), 1000));
 }
 
-//Add event listener to temperature slider
+//Add event listener to slider button
+let addEventListenerButton = (id) => {
+  document.getElementById(id).addEventListener('mousedown', mouseMove(id));
+}
 
 
 //Add event listener for the current temperature slider
@@ -130,3 +133,10 @@ addEventListenerInput('maxDesirTemp');
 addEventListenerInput('minFinContrPress');
 addEventListenerInput('maxFinContrPress');
 recalculate(data, type.normalBehaviour);
+
+let sld = document.getElementById('slider-temperature');
+let sldVal = document.getElementById('slider-val');
+sld.oninput = () => {
+  sldVal.innerHTML = (sld.value/100)*(data.maxDesirTemp.val - data.minDesirTemp.val) + data.minDesirTemp.val;
+  // sldVal.style.left = 
+}

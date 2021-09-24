@@ -38,7 +38,7 @@ exports.data = {
 };
 
 exports.type = {
-  normalBehaviour: 'closed',
+  normalBehaviour: 'normalClosed',
   language: 'english',
   degreeUnit: 'F'
 };

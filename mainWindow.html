@@ -52,16 +52,13 @@
       </div>
     </div> 
     <div class='currentTemp naked'>
-      <div id='currentTempLabel'></div>      
+      <div id='currentTempLabel' class='currentTempLabel'></div>      
       <div class='currentTempContainer'>
         <div class='emptyTop naked'>
-          <div id='sliderButtonDisplay' class='sliderButtonDisplay'></div>
+          <div id='slider-val' class='sliderButtonDisplay naked'></div>
         </div>
-        <div class='currentTempControls naked'>
+        <div class='currentTempControls naked' >
           <div id='arrowLeft' class='sliderArrow naked'>&#11164;</div>
-          <!-- <div class='slider naked'>
-            <div id='sliderButtonHandle' class='sliderButtonHandle'></div>
-          </div> -->
           <input type='range' id='slider-temperature' class='currentTempSlider naked' min='0' max='100' step='1' value='50'>
           <div id='arrowRight' class='sliderArrow naked'>&#11166;</div>
           <input type='number' id='temperature'>
@@ -102,7 +99,10 @@
     </div> 
   </div>
   <div class='sliders'>
-    <input type='range' id='currentTempSlider' class='example' min='0' max='100' step='1' value='50' orient='vertical'>
+    <input type='range' id='transmPressSlider' class='example' min='0' max='100' step='1' value='50' orient='vertical'>
+    <input type='range' id='desirTempSlider' class='example' min='0' max='100' step='1' value='50' orient='vertical'>
+    <input type='range' id='finalControlPressSlider' class='example' min='0' max='100' step='1' value='50' orient='vertical'>
+    <input type='range' id='finalControlOpenSlider' class='example' min='0' max='100' step='1' value='50' orient='vertical'>
   </div>
 </body>
 </html>
