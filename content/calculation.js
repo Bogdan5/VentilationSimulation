@@ -86,13 +86,18 @@ let renderResults = (data, minOpen, maxOpen) => {
   document.getElementById('sensitivityVal').innerHTML = setDecimal(sensit);
   document.getElementById('proportionalBandVal').innerHTML = setDecimal((sensit * 100)/(data.maxTransmTemp.val - data.minTransmTemp.val)) + "%";
   let tempSl = (data.temperature.val - data.minTransmTemp.val)/(data.maxTransmTemp.val - data.minTransmTemp.val);
+  let temp = 100 - 100*(data.temperature.val - data.minDesirTemp.val)/(data.maxDesirTemp.val - data.minDesirTemp.val);
   document.getElementById('transmitterPressVal').innerHTML = 3 + setDecimal(12 * tempSl);
-  document.getElementById('transmPressSlider').value = tempSl * 100;
   document.getElementById('finContrPressVal').innerHTML = setDecimal(data.minFinContrPress.val + ((data.maxFinContrPress.val - data.minFinContrPress.val)*
     (data.temperature.val - data.minDesirTemp.val))/(data.maxDesirTemp.val - data.minDesirTemp.val));
   document.getElementById('openFinContrVal').innerHTML = setDecimal(minOpen + (data.temperature.val - data.minDesirTemp.val)*(maxOpen - minOpen)/
   (data.maxDesirTemp.val - data.minDesirTemp.val));
   document.getElementById('setPointVal').innerHTML = setDecimal((data.maxDesirTemp.val + data.minDesirTemp.val)/2);
+  //Moving the bottom sliders
+  document.getElementById('transmTempSlider').value = 100 - tempSl * 100;
+  document.getElementById('transmPressSlider').value = 100 - tempSl * 100;
+  document.getElementById('finalControlPressSlider').value = temp;
+  document.getElementById('finalControlOpenSlider').value = temp;
 }
 
 // Recalculates value on change
@@ -147,11 +152,13 @@ exports.sliderMove = (id) => {
     let nod = document.getElementById(id);
     let inp = document.getElementById(id.slice(7));
     let disp = document.getElementById('slider-val');
-    let temp = (nod.value/100)*(data.maxDesirTemp.val - data.minDesirTemp.val) + data.minDesirTemp.val;
+    let val = Number(nod.value);
+    let temp = (val/100)*(data.maxDesirTemp.val - data.minDesirTemp.val) + data.minDesirTemp.val;
     console.log('slider moved');
     inp.value = temp;
     data[id.slice(7)].val = setDecimal(temp);
-    disp.style.left = `${(temp * 2.5) + 19}px`;
+    disp.innerHTML = (val/100)*(data.maxDesirTemp.val - data.minDesirTemp.val) + data.minDesirTemp.val;
+    disp.style.left = `${val*2 + 20}px`;
     recalculate(data);
   }
 }

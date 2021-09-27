@@ -31,7 +31,7 @@ exports.data = {
     elem: document.getElementById('maxFinContrPressData')
   },
   temperature: {
-    val: 73,
+    val: 75,
     known: true,
     elem: document.getElementById('temperature')
   }

@@ -96,7 +96,7 @@ let addEventListenerButton = (id) => {
 
 
 //Add event listener for the current temperature slider
-document.getElementById('slider-temperature').addEventListener('change', sliderMove('slider-temperature'));
+document.getElementById('slider-temperature').addEventListener('input', sliderMove('slider-temperature'));
 
 //***************************************************************************************************
 //*******************SLIDER**************************************************************************
@@ -136,7 +136,8 @@ recalculate(data, type.normalBehaviour);
 
 let sld = document.getElementById('slider-temperature');
 let sldVal = document.getElementById('slider-val');
-sld.oninput = () => {
-  sldVal.innerHTML = (sld.value/100)*(data.maxDesirTemp.val - data.minDesirTemp.val) + data.minDesirTemp.val;
-  // sldVal.style.left = 
-}
+// sld.oninput = () => {
+//   let val = Number(sld.value);
+//   sldVal.innerHTML = (val/100)*(data.maxDesirTemp.val - data.minDesirTemp.val) + data.minDesirTemp.val;
+//   sldVal.style.left = `${val*2 + 20}px`;
+// }
