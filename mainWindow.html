@@ -14,7 +14,7 @@
       <button id='normalBehaviourButton' class='optionsButton'></button>
     </div>
     <div class='canvasContainer'>
-      <canvas id='drawing' width='1100' height='100'>
+      <canvas id='drawing' width='1100' height='70'>
         <script src='./content/canvas.js'></script>
       </canvas>
     </div>
@@ -28,6 +28,10 @@
           <input type='number' id='minTransmTemp' step='0.1'>
           <input type='number' id='maxTransmTemp' step='0.1'>
         </div>
+        <div class='variablesUnit'>
+          <div class='tempUnit'></div>
+          <div class='tempUnit'></div>
+        </div>
       </div>
       <div class='variablesContainer naked'>
         <div class='variablesUnit'>
@@ -37,6 +41,10 @@
         <div class='variablesUnit'>
           <input type='number' id='minDesirTemp' step='0.1'>
           <input type='number' id='maxDesirTemp' step='0.1'>
+        </div>
+        <div class='variablesUnit'>
+          <div class='tempUnit'></div>
+          <div class='tempUnit'></div>
         </div>
       </div>
 
@@ -49,9 +57,13 @@
           <input type='number' id='minFinContrPress' step='0.1'>
           <input type='number' id='maxFinContrPress' step='0.1'>
         </div>
+        <div class='variablesUnit'>
+          <div class='pressUnit'></div>
+          <div class='pressUnit'></div>
+        </div>
       </div>
     </div> 
-    <div class='currentTemp naked'>
+    <div class='currentTemp'>
       <div id='currentTempLabel' class='currentTempLabel'></div>      
       <div class='currentTempContainer'>
         <div class='emptyTop naked'>
@@ -99,16 +111,16 @@
     </div> 
   </div>
   <div class='sliders'>
-    <div>
+    <div class='sliderVertContainer'>
       <input type='range' id='transmTempSlider' class='vertical slider' min='0' max='100' step='1' value='50' orient='vertical'>
     </div>
-    <div>
+    <div class='sliderVertContainer'>
     <input type='range' id='transmPressSlider' class='vertical slider' min='0' max='100' step='1' value='50' orient='vertical'>
     </div>
-    <div>
+    <div class='sliderVertContainer'>
       <input type='range' id='finalControlPressSlider' class='vertical slider' min='0' max='100' step='1' value='50' orient='vertical'>
     </div>
-    <div>
+    <div class='sliderVertContainer'>
       <input type='range' id='finalControlOpenSlider' class='vertical slider' min='0' max='100' step='1' value='50' orient='vertical'>
     </div>
   </div>

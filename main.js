@@ -12,7 +12,7 @@ let mainWindow;
 app.on('ready', function(){
   mainWindow = new BrowserWindow({
     width: 1200,
-    height: 500
+    height: 800
   });
   // Load html into the window
   mainWindow.loadURL(url.format({

@@ -52,7 +52,6 @@ html, body {
 }
 
 canvas {
-  /* border: 2px solid; */
   outline: 0;
   padding: 0;
 }
@@ -60,11 +59,13 @@ canvas {
 .canvasContainer {
   display: flex;
   justify-content: center;
+  padding: 5px;
 }
 
 .variables {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
 }
 
 .variablesContainer {
@@ -81,6 +82,9 @@ canvas {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
+}
+.variablesUnit > div {
+  margin: 0 3px 3px 3px;
 }
 
 /* .variablesUnit>div{
@@ -121,7 +125,7 @@ input {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .currentTempLabel {
@@ -199,6 +203,11 @@ input {
 .sliders {
   display: flex;
   flex-direction: row;
+  height: 240px;
+}
+
+.slidersVertContainer {
+  height: 240px;
 }
 
 /*# sourceMappingURL=style.css.map */
