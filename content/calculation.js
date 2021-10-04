@@ -77,6 +77,113 @@ let dataValidityCheck = data => {
   // return false;
 };
 
+//Check validity of individual input
+let validityCheck = (id, inp) => {
+  switch (id){
+    case 'minTransmTemp':
+      if (data.maxTransmTemp.known && (inp >= data.maxTransmTemp.val)){
+        console.log('Error: Minimum transmitter temperature should be lower than maximum transmitter temperature');
+         return false;
+      }
+      if (data.temperature.known && (inp >= data.temperature.val)){
+        console.log('Error: Minimum transmitter temperature should be lower than the current temperature');
+         return false;
+      }
+      if (data.minDesirTemp.known && (inp >= data.minDesirTemp.val)){
+        console.log('Error: Minimum transmitter temperature should be lower than minimum desirable temperature');
+         return false;
+      }
+      if (data.maxDesirTemp.known && (inp >= data.maxDesirTemp.val)){
+        console.log('Error: Minimum transmitter temperature should be lower than maximum desirable temperature');
+         return false;
+      }
+      return true;
+    case 'maxTransmTemp':
+      if (data.minTransmTemp.known && (inp <= data.minTransmTemp.val)){
+        console.log('Error: Maximum transmitter temperature should be higher than the minimum transmitter temperature');
+         return false;
+      }
+      if (data.temperature.known && (inp <= data.temperature.val)){
+        console.log('Error: Maximum transmitter temperature should be higher than the current temperature');
+         return false;
+      }
+      if (data.minDesirTemp.known && (inp <= data.minDesirTemp.val)){
+        console.log('Error: Maximum transmitter temperature should be higher than minimum desirable temperature');
+         return false;
+      }
+      if (data.maxDesirTemp.known && (inp <= data.maxDesirTemp.val)){
+        console.log('Error: Maximum transmitter temperature should be higher than maximum desirable temperature');
+         return false;
+      }
+      return true;
+    case 'minDesirTemp':
+      if (data.minTransmTemp.known && (inp <= data.minTransmTemp.val)){
+        console.log('Error: Minimum desirable temperature should be higher than the minimum transmitter temperature');
+         return false;
+      }
+      if (data.maxTransmTemp.known && (inp >= data.maxTransmTemp.val)){
+        console.log('Error: Minimum desirable temperature should be lower than the maximum desirable temperature');
+         return false;
+      }
+      if (data.temperature.known && (inp >= data.temperature.val)){
+        console.log('Error: Minimum desirable temperature should be lower than the current temperature');
+         return false;
+      }
+      if (data.maxDesirTemp.known && (inp >= data.maxDesirTemp.val)){
+        console.log('Error: Minimum desirable temperature should be lower than maximum desirable temperature');
+         return false;
+      }
+      return true;
+    case 'maxDesirTemp':
+      if (data.minTransmTemp.known && (inp >= data.minTransmTemp.val)){
+        console.log('Error: Maximum desirable temperature should be higher than the minimum transmitter temperature');
+         return false;
+      }
+      if (data.maxTransmTemp.known && (inp >= data.maxTransmTemp.val)){
+        console.log('Error: Maximum desirable temperature should be lower than the maximum transmitter temperature');
+         return false;
+      }
+      if (data.temperature.known && (inp <= data.temperature.val)){
+        console.log('Error: Maximum desirable temperature should be higher than the current temperature');
+         return false;
+      }
+      if (data.minDesirTemp.known && (inp <= data.minDesirTemp.val)){
+        console.log('Error: Maximum desirable temperature should be higher than minimum desirable temperature');
+         return false;
+      }
+      return true;
+    case 'minFinContrPress':
+      if (data.maxFinContrPress.known && (inp >= data.maxFinContrPress.val)){
+        console.log('Error: Minimum final control pressure should be lower than the maximum final control pressure');
+        return false;
+      }
+    case 'maxFinContrPress':
+      if (data.minFinContrPress.known && (inp <= data.minFinContrPress.val)){
+        console.log('Error: Maximum final control pressure should be lower than the minimum final control pressure');
+        return false;
+      }
+      break;
+    case 'temperature':
+      if (data.minTransmTemp.known && (inp <= data.minTransmTemp.val)){
+        console.log('Error: Current temperature should be higher than the minimum transmitter temperature');
+         return false;
+      }
+      if (data.maxTransmTemp.known && (inp >= data.maxTransmTemp.val)){
+        console.log('Error: Current temperature should be lower than the maximum transmitter temperature');
+         return false;
+      }
+      if (data.minDesirTemp.known && (inp <= data.minDesirTemp.val)){
+        console.log('Error: Current temperature should be higher than the minimum desirable temperature');
+         return false;
+      }
+      if (data.maxDesirTemp.known && (inp >= data.maxDesirTemp.val)){
+        console.log('Error: Current temperature should be lower than maximum desirable temperature');
+         return false;
+      }
+    return true;
+  }
+}
+
 let setDecimal = (num) => Math.round((num + Number.EPSILON) * 10) / 10;
 
 
@@ -116,33 +223,43 @@ exports.recalculate = (data, normalBehaviour) => {
   // }
 }
 
+//Remove excess decimals
+let removeExcess = (str) => {
+  if (str.indexOf('.') > 0){
+    let start = str.indexOf('.');
+    return str.slice(0, start + 2);
+  }
+  return str;
+}
+
 // Get the values of the input
 exports.saveInputChange = (id) => {
   return () => {
     let x = data[id].val;
     let nod = document.getElementById(id);
     let val = nod.value;
-    console.log('value:', val);
     if (val.length === 0){
       data[id].known = false;
-      nod.value = '';
+      // nod.value = '';
     } else {
-      data[id].known = true;
-      data[id].val = Number(val);
-      //Input control
-      // let test = /^-?\d+(.\d)?$/.test(val);
-      // console.log('test is ', test);
-      //Check if the data is complete and valid
-      if (dataCompletenessCheck(data)){
-        if (!dataValidityCheck(data)){
-
-          data[id].val = x;
-          nod.value = x;
-          
-          //maybe some comment of wrong input
+      let test = /^-?\d+(.\d+)?$/.test(val);
+      if (test) {
+        let trimmed = removeExcess(val);
+        nod.value = trimmed;
+        //Test validity of entry
+        if (validityCheck(id, Number(trimmed))){
+          console.log('trimmed', trimmed);
+          data[id].known = true;
+          data[id].val = Number(trimmed);
+          if (dataCompletenessCheck(data)){
+            recalculate(data);
+          }
+          return;
         }
-        recalculate(data, type.normalBehaviour);
       }
+      data[id].val = x;
+      data[id].known = false;
+      nod.value = x;
     }
   }
 }

@@ -90,7 +90,7 @@ canvas {
 /* .variablesUnit>div{
   width:60%;
 } */
-input {
+.variablesUnit > input, #temperature {
   width: 55px;
   margin-left: 10px;
   text-align: center;
@@ -131,6 +131,7 @@ input {
 .currentTempLabel {
   justify-content: center;
   line-height: 48px;
+  padding: 0 5px;
 }
 
 .currentTempContainer {
@@ -206,8 +207,9 @@ input {
   height: 240px;
 }
 
-.slidersVertContainer {
-  height: 240px;
+.sliderVertContainer {
+  height: 260px;
+  width: 200px;
 }
 
 /*# sourceMappingURL=style.css.map */
