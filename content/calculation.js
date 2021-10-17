@@ -135,7 +135,7 @@ let validityCheck = (id, inp) => {
       }
       return true;
     case 'maxDesirTemp':
-      if (data.minTransmTemp.known && (inp >= data.minTransmTemp.val)){
+      if (data.minTransmTemp.known && (inp <= data.minTransmTemp.val)){
         console.log('Error: Maximum desirable temperature should be higher than the minimum transmitter temperature');
          return false;
       }
@@ -205,6 +205,8 @@ let renderResults = (data, minOpen, maxOpen) => {
   document.getElementById('transmPressSlider').value = 100 - tempSl * 100;
   document.getElementById('finalControlPressSlider').value = temp;
   document.getElementById('finalControlOpenSlider').value = temp;
+  //Change display aids for vertical sliders
+  // document.getElementById()
 }
 
 // Recalculates value on change
@@ -235,7 +237,6 @@ let removeExcess = (str) => {
 // Get the values of the input
 exports.saveInputChange = (id) => {
   return () => {
-    let x = data[id].val;
     let nod = document.getElementById(id);
     let val = nod.value;
     if (val.length === 0){
@@ -248,7 +249,6 @@ exports.saveInputChange = (id) => {
         nod.value = trimmed;
         //Test validity of entry
         if (validityCheck(id, Number(trimmed))){
-          console.log('trimmed', trimmed);
           data[id].known = true;
           data[id].val = Number(trimmed);
           if (dataCompletenessCheck(data)){
@@ -257,9 +257,8 @@ exports.saveInputChange = (id) => {
           return;
         }
       }
-      data[id].val = x;
       data[id].known = false;
-      nod.value = x;
+      nod.value = '';
     }
   }
 }
@@ -274,7 +273,7 @@ exports.sliderMove = (id) => {
     console.log('slider moved');
     inp.value = temp;
     data[id.slice(7)].val = setDecimal(temp);
-    disp.innerHTML = (val/100)*(data.maxDesirTemp.val - data.minDesirTemp.val) + data.minDesirTemp.val;
+    disp.innerHTML = Math.round(10*((val/100)*(data.maxDesirTemp.val - data.minDesirTemp.val) + data.minDesirTemp.val))/10;
     disp.style.left = `${val*2 + 20}px`;
     recalculate(data);
   }

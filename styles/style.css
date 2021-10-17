@@ -210,6 +210,23 @@ canvas {
 .sliderVertContainer {
   height: 260px;
   width: 200px;
+  position: relative;
+}
+
+.sliderVertTransmRange {
+  position: absolute;
+  width: 40px;
+  background-color: chartreuse;
+  left: 63px;
+}
+
+.sliderVertRangeVal {
+  height: 24px;
+  width: 40px;
+}
+
+.sliderVertRangeMiddle {
+  width: 40px;
 }
 
 /*# sourceMappingURL=style.css.map */
